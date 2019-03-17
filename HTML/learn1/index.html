@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue1</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/learn1/style.css">
+	<script src="../../source/vue.js"></script>
+</head>
+<body>
+	<!--文本插值是最基本的形式，使用双大括号{{}}-->
+	<div id="app">
+		{{message}}
+	</div>
+	<!--指令-->
+	<div id="app-2">
+		<span v-bind:title="message">
+			鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		</span>
+	</div>	
+	<!--v-if 指令-->
+	<div id="app-3">
+		<p v-if="seen">现在你看到我了</p>
+		<template v-if="ok">
+			<h1>title</h1>
+			<p>Paragraph 1</p>
+			<p>Paragraph</p>
+		</template>
+	</div>
+	<!--v-show 指令-->
+	<div id="app-4">
+		<p v-show="greeting">Hello!</p>
+	</div>
+	<!--v-else就是javascript中的else的意思，它必须跟着v-if或v-show-->
+	<div id="app-5">
+		<p v-if="ok">我是对的</p>
+		<p v-else="ok">我是错的</p>
+	</div>
+	<!-- v-model 指令用来在input，select, text, checkbox, radio等表单控制元素上创建双向数据绑定-->
+	<div id="app-6">
+		<form>
+			姓名：<input type="text" v-model="data.name" placeholder=""><br/>
+			性别：<input type="radio" id="man" value="One" v-model="data.sex">
+				 <label for="man">男</label>
+				 <input type="radio" id="male" value="Two" v-model="data.sex">
+				 <label for="male">女</label><br/>
+			兴趣：
+			<input type="checkbox" id="book" value="book" v-model="data.interest">
+			<label for="book">阅读</label>
+			<input type="checkbox" id="swim" value="swim" v-model="data.interest">
+			<label for="swim">游泳</label>
+			<input type="checkbox" id="game" value="game" v-model="data.interest">
+			<label for="game">游戏</label>
+			<input type="checkbox" id="song" value="song" v-model="data.insterest">
+			<label for="song">唱歌</label>
+			<br/>
+			身份：
+			<select v-model="data.identity">
+				<option value="teacher" selected>教师</option>
+				<option value="doctor">医生</option>
+				<option value="lawyer">律师</option>
+			</select>
+		</form>
+	</div>
+	<!-- v-for 指令基于源数据重复渲染元素-->
+	<div id="app-7">
+		<ul id="demo">
+			<li v-for="item in items">
+				{{item.parentMessage}} {{item.msg}}
+			</li>
+		</ul>
+
+		<ul id="repeat-object">
+			<li v-for="(key, value) in primitiveValues">{{value}}:{{key}}</li>
+			<li>====</li>
+			<li v-for="(key, item) in objectValues">{{item}} : {{key.msg}}</li>
+		</ul>
+	</div>
+	<!--v-blind-->
+	<div id="app-8">
+		<div :class="[classA, {classB:isB, classC: isC}]"></div>
+	</div>
+	<div id="app-9">
+		<div v-bind="{id: someProp, 'OTHERATTR': otherProp}"></div>
+	</div>
+	<script type="text/javascript" src="../../JS/learn1/script.js"></script>
+</body>
+</html>
