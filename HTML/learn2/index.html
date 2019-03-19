@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue2</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/learn2/style.css">
+	<script src="../../source/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{foo}}</p>
+		<button v-on:click="foo = 'baz'">Change It</button>
+	</div>
+	<div id="demo">
+		<div v-my-directive="a">{{a.b.c}}</div>
+		<button @click="change">change</button>
+	</div>
+	<div id="a">
+		<p>Using mustanches:{{rawHtml}}</p>
+		<p>Using v-html directive:<span v-html="rawHtml"></span></p>
+	</div>
+	<div id="b">
+		<button type="button" v-on:click="disabled=!disabled">反转{{disabled}}</button>
+        <button type="button" v-bind:disabled="disabled">提交</button>
+        <p v-if="seen">现在你看到我了</p>
+        <a v-bind:href="url">这是可以更新的地址</a>
+        <a v-on:click="dosomething">给了一个点击事件</a>
+        <p>---------<p>
+        	<!--
+        <a v-bind:[attributeName]="uuu">动态属性</a>
+        <a v-on:[eventName]="foo">动态事件属性</a>-->
+          	
+	</div>
+	<div id="example">
+      		<p>Original message:"{{ message }}"</p>
+      		<p>Computed reversed message:"{{reversedMessage}}"</p>	
+     </div>
+     <div id="aa">
+     	<p>Original message:"{{ message }}"</p>
+     	<p>Revered message: "{{reversedMessage}}"</p>
+     </div>
+     
+     <div id="demoo">{{fullName}}</div>
+
+     <div id="watch-example">
+     	<p>Ask a yes/no question:
+     		<input v-model="question">
+     	</p>
+     	<p>{{answer}}</p>
+     </div>
+
+     <div class="static" v-bind:class=" {active: isActive, 'text-danger': hasError}"></div>
+
+     <div id="classObject" v-bind:class="classObject"></div>
+
+	<script type="text/javascript" src="../../JS/learn2/script.js"></script>
+</body>
+</html>
