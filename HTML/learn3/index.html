@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue3</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/learn3/style.css">
+	<script src="../../source/vue.js"></script>
+</head>
+<body>
+	<!--Class与Style的绑定-->
+    <div id="demo">
+        <div v-bind:class="[activeClass, errorClass]"></div>
+        <div v-bind:class="[isActive ? activeClass: '', errorClass]"></div>
+
+        <div v-bind:style="{color: activeColor, fontSize: fontSize+'px'}">绑定内联样式</div>
+        <div v-bind:style="styleObject">直接绑定一个对象更好</div>
+        <div v-bind:style="[baseStyles, overridingStyles]">数组语法可以将多个样式对象应用到同一个元素上</div>
+    </div>
+    <hr>
+    <!--条件渲染-->
+    <div id="demo1">
+        <h1 v-if="awesome">Vue is awesome</h1>
+        <h1 v-else>oh no</h1>
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph1</p>
+            <p>Paragraph2</p>
+        </template>
+
+        <div v-if="Math.random() > 0.5">
+            Now you see me 
+        </div>
+        <div v-else>
+            Now you don't
+        </div>
+
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            B
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter you username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter you Email address" key="email-input">
+        </template>
+        <button v-on:click="show">Toggle login type</button>
+    </div>
+    <hr>
+    <!--列表渲染-->
+    <ul id="demo2">
+       <ul id="example">
+           <li v-for="item in items">{{item.message}}</li>
+       </ul> 
+       <ul id="example-2">
+           <li v-for="(item, index) in items">
+               {{parentMessage}}-{{index}}-{{item.message}}
+           </li>
+       </ul>
+       <ul id="v-for-object" class="dem">
+           <li v-for="value in object">
+               {{value}}
+           </li>
+       </ul>
+       <div v-for="(item, key) in items">
+           {{key}} : {{item}}
+       </div>
+       <div v-for="(item, key, index) in object" class="c">
+           {{key}}-{{index}}-{{item}}
+       </div>
+       
+       <div>
+           <span v-for="n in 10">{{n}}</span>
+       </div>
+        
+    </ul>
+
+    <ul id="example-3">
+        <li v-for="n in eventNumbers">{{n}}</li>
+    </ul>
+    <!--类似于 v-if，你也可以利用带有 v-for 的 <template> 渲染多个元素-->
+    <ul id="example-4">
+        <template v-for="item in items">
+            <li>{{ item.msg }}</li>
+            <li class="divider" role="presentation"></li>
+        </template>
+    </ul>
+    <hr>
+    <!--事件处理-->
+    <div id="eventManger">
+        <!--可以用 v-on 指令监听 DOM 事件，并在触发时运行一些 JavaScript 代码-->
+        <button v-on:click="counter += 1">add 1</button>
+        <p>The button above has been clicked {{counter}} times.</p>
+        <!--然而许多事件处理逻辑会更为复杂，所以直接把 JavaScript 代码写在 v-on 指令中是不可行的。因此 v-on 还可以接收一个需要调用的方法名称。-->
+        <button v-on:click="greet ">Greet</button>
+        <!--除了直接绑定到一个方法，也可以在内联 JavaScript 语句中调用方法-->
+        <button v-on:click="say('hi')">Say hi</button>
+        <button v-on:click="say('what')">Say what</button>
+    </div>
+	<script type="text/javascript" src="../../JS/learn3/script.js"></script>
+</body>
+</html>
