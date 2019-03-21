@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vue3</title>
+	<link rel="stylesheet" type="text/css" href="../../CSS/learn4/style.css">
+	<script src="../../source/vue.js"></script>
+</head>
+<body>
+  <!--组件基础-->
+  <div id="components-demo">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+  </div>
+  <!--当一个值传递给一个 prop 特性的时候，它就变成了那个组件实例的一个属性-->
+  <div id="components-prop">
+    <blog-post title="My journey with Vue"></blog-post>
+    <blog-post title="Blogging with Vue"></blog-post>
+    <blog-post title="Why Vue is so fun"></blog-post>
+  </div>
+  <div id="blog-post-demo">
+    <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title"></blog-post>
+  </div>
+	<script type="text/javascript" src="../../JS/learn4/components.js"></script>
+</body>
+</html>
