@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax example</title>
+</head>
+<body>
+    <div>
+        <button>apples</button>
+        <button>cherries</button>
+        <button>Bananas</button>
+    </div>
+    <div id="target">press a button</div>
+    <script>
+        var buttons = document.getElementsByTagName("button");
+        for(var i = 0; i < buttons.length; i++){
+            buttons[i].onclick = handleButtonPress;
+        }
+        function handleButtonPress(e){
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = handleResponse;
+            httpRequest.open("GET", e.target.innerHTML + ".html");
+            httpRequest.send();
+        }
+        function handleResponse(e){
+            if(e.target.readyState == XMLHttpRequest.DONE && e.target.status == 200){
+                document.getElementById("target").innerHTML = e.target.responseText;
+            }
+        }
+    </script>
+</body>
+</html>
